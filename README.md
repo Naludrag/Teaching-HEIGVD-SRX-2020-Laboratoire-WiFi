@@ -44,22 +44,29 @@ Nous savons que la cible s’est hébergée à l’hôtel « Black Rain » et qu
 >
 > **_Réponse :_** Nous avons utilisé le filtre suivant `wlan.fc.type_subtype == 4 && (wlan.ssid contains "Starbucks" || wlan.ssid contains "Black Rain" || wlan.ssid contains "BlackRain")`
 
+> Ce filtre permet de n'avoir que les probe request grâce à `wlan.fc.type_subtype == 4` et ensuite nous avons déduis les SSID des routeurs des endroits visités.
+
 ---
 > **_Question :_** Quel est l’adresse MAC de la cible ?
 >
-> **_Réponse :_**  [le fichier de capture](images)
-Grâce à la capture ci-dessus nous pouvons voir que l'appareil qui ressort dans les 2 paquets est fc:f1:36:22:49:74 et donc nous pouvons en déduire que cela sagit de la cible.
+> **_Réponse :_**  ![Addresse MAC](images/MAC_Cible.png)
+Grâce à la capture ci-dessus nous pouvons voir que l'appareil qui est trouvée dans les 2 paquets est fc:f1:36:22:49:74 et donc nous pouvons en déduire que cela s'agit surêment de la cible recherchée.
 
 ---
 > **_Question :_** Quel est le nom du constructeur de l’interface sans fils de la cible ?
 >
-> **_Réponse :_** Selon les valeurs trouvées sur les paquets et internet nous déduissons que le nom de constructeur est Samsung
+> **_Réponse :_** Selon les valeurs trouvées sur les paquets et sur internet nous déduissons que le nom de constructeur est Samsung.
+
+> ![Addresse MAC constructeur](images/MAC_Constructeur.png)
 
 ---
 > **_Question :_** Quel autres endroits la cible a-t-elle probablement visités ?
 >
-> **_Réponse :_**  Pour trouver d'autres endroits nous avons utilisés les filtres suivants : `wlan.fc.type_subtype == 4 && wlan.sa == fc:f1:36:22:49:74` cela permet de filtrer par rapport à l'adresse MAC de la cible
+> **_Réponse :_**  Pour trouver d'autres endroits nous avons utilisés les filtres suivants : `wlan.fc.type_subtype == 4 && wlan.sa == fc:f1:36:22:49:74` cela permet de filtrer par rapport à l'adresse MAC de la cible.
 
+> ![Endroits](images/Endroits_cible.png)
+
+>Nous pouvons alors constater que la cible c'est encore connecter à 3 hotspsot différents.
 ---
 
 # Réseaux protégés par WEP
@@ -109,12 +116,12 @@ Maintenant que vous avez la clé WEP, configurez la dans Wireshark afin de déch
 ---
 > **_Montrer une capture d'écran de l'obtention de la clé WEP_**
 >
-> **_Capture ici_**
+>  ![Résultat aircrack WEP](images/Aircrack_WEP.png)
 
 ---
 > **_Question :_** Arrivez-vous à récupérer les informations d’identification (credentials) de l’authentification basique http contenue dans la capture ?
 >
-> **_Réponse :_** ![Configuration de protocoles dans Wireshark](images/WEP_HTTP.png) Les credentials sont donc admin admin
+> **_Réponse :_** ![Credentials](images/WEP_HTTP.png) Les credentials sont donc admin admin
 
 ---
 
@@ -169,7 +176,7 @@ aircrack-ng <nom-du-fichier-capture> -w <nom-du-dictionnaire>
 ---
 > **_Montrer une capture d'écran de l'obtention de la passphrase WPA_**
 >
-> **_Capture ici_**
+> ![Aircrack WPA](images/Aircrack_WPA.png)
 
 ---
 > **_Question :_** Lors de la capture, la cible a fait un « ping » sur un serveur. Arrivez-vous à dire de quel serveur il s’agit ?
@@ -177,6 +184,9 @@ aircrack-ng <nom-du-fichier-capture> -w <nom-du-dictionnaire>
 >
 > **_Réponse :_**
 >![Configuration de protocoles dans Wireshark](images/WPA.PNG)
+
+> Les paquets ICMP ne nous permettant d'avoir d'informations sur la cible. Nous avons alors, une fois l'ip trouvé, effectué un nslookup pour trouver le nom du serveur. Qui par ailleurs fait partie des serveurs de service de Facebook.
+
 > Adresse IP du serveur : 31.13.64.35
 >
 > Nom de Domaine : edge-star-mini-shv-01-amt2.facebook.com
@@ -191,7 +201,9 @@ Nous avons enlevé une seule trame (choisie stratégiquement) du fichier de capt
 
 > **_Question :_** Est-ce que vous arrivez à refaire l'exercice ? Pourquoi ou pourquoi pas ?
 >
-> **_Réponse :_** Nous ne pouvons pas le refaire car nous n'avons pas le handshake complet.
+> **_Réponse :_** Nous ne pouvons pas le refaire car nous n'avons pas le handshake complet. Il donc impossible pour aircrack de trouver des réseaux.
+
+> ![Aircrack WPA](images/Aircrack_WPA_2.png)
 
 ---
 > **_Question :_** Sur la base de votre réponse précédente, arrivez-vous à déduire quelle trame a été effacée ?
