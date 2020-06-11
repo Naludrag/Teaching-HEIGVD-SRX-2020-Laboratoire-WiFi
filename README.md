@@ -64,9 +64,9 @@ Grâce à la capture ci-dessus nous pouvons voir que l'appareil qui est trouvée
 >
 > **_Réponse :_**  Pour trouver d'autres endroits nous avons utilisés les filtres suivants : `wlan.fc.type_subtype == 4 && wlan.sa == fc:f1:36:22:49:74` cela permet de filtrer par rapport à l'adresse MAC de la cible.
 
-> ![Endroits](images/Endroits_cible.png)
+> ![Endroits](images/Endroits_Cible.png)
 
->Nous pouvons alors constater que la cible c'est encore connecter à 3 hotspsot différents.
+>Nous pouvons alors constater que la cible c'est encore connecter à 3 hotspsot différents : MIGROS, GVA Airport et Flerus de Pains
 ---
 
 # Réseaux protégés par WEP
@@ -121,7 +121,9 @@ Maintenant que vous avez la clé WEP, configurez la dans Wireshark afin de déch
 ---
 > **_Question :_** Arrivez-vous à récupérer les informations d’identification (credentials) de l’authentification basique http contenue dans la capture ?
 >
-> **_Réponse :_** ![Credentials](images/WEP_HTTP.png) Les credentials sont donc admin admin
+> **_Réponse :_** Il est possible d'obtenir les credentials en regardant le premier paquet HTTP tranmsis au site Web
+> ![Credentials](images/WEP_HTTP.PNG)
+> Les credentials sont donc admin admin
 
 ---
 
@@ -148,8 +150,8 @@ Nous utiliserons Wireshark pour trouver l’authentification WPA contenue dans l
 
 > **_Fournir une capture d'écran des chiffres aléatoires_**
 >
-> ![Configuration de protocoles dans Wireshark](images/First_Nonce.png)
-> ![Configuration de protocoles dans Wireshark](images/Second_Nonce.png)
+> ![Configuration de protocoles dans Wireshark](images/First_Nonce.PNG)
+> ![Configuration de protocoles dans Wireshark](images/Second_Nonce.PNG)
 
 ---
 
