@@ -204,9 +204,13 @@ Nous avons enlevé une seule trame (choisie stratégiquement) du fichier de capt
 > **_Question :_** Est-ce que vous arrivez à refaire l'exercice ? Pourquoi ou pourquoi pas ?
 >
 > **_Réponse :_** Lorsqu'on tentait d'ouvrir le fichier cap avec `aircrack-ng`, vous avions l'erreur suivante : 
+
 > ![Aircrack WPA](images/Aircrack_WPA_2.png)
+
 > Le problème a été reglé en l'ouvrant dans Wireshark puis en l'exportant en `pcap`. On peut voir qu'aucun handshake n'est disponible :
+
 > ![Aircrack WPA](images/Aircrack_WPA_2_2.png)
+
 > Nous ne pouvons pas le refaire l'exercice car nous n'avons pas le handshake complet. Il est donc impossible pour Aircrack de bruteforce la clé.
 
 
