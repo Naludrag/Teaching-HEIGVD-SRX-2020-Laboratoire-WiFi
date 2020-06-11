@@ -50,23 +50,23 @@ Nous savons que la cible s’est hébergée à l’hôtel « Black Rain » et qu
 > **_Question :_** Quel est l’adresse MAC de la cible ?
 >
 > **_Réponse :_**  ![Addresse MAC](images/MAC_Cible.png)
-Grâce à la capture ci-dessus nous pouvons voir que l'appareil qui est trouvée dans les 2 paquets est fc:f1:36:22:49:74 et donc nous pouvons en déduire que cela s'agit surêment de la cible recherchée.
+Grâce à la capture ci-dessus, nous pouvons voir que l'appareil qui est trouvé dans les 2 paquets est fc:f1:36:22:49:74. Nous en déduisons donc que cela s'agit de la cible recherchée.
 
 ---
 > **_Question :_** Quel est le nom du constructeur de l’interface sans fils de la cible ?
 >
-> **_Réponse :_** Selon les valeurs trouvées sur les paquets et sur internet nous déduissons que le nom de constructeur est Samsung.
+> **_Réponse :_** Selon les valeurs trouvées sur les paquets et sur internet nous savons que le nom du constructeur est Samsung.
 
 > ![Addresse MAC constructeur](images/MAC_Constructeur.png)
 
 ---
 > **_Question :_** Quel autres endroits la cible a-t-elle probablement visités ?
 >
-> **_Réponse :_**  Pour trouver d'autres endroits nous avons utilisés les filtres suivants : `wlan.fc.type_subtype == 4 && wlan.sa == fc:f1:36:22:49:74` cela permet de filtrer par rapport à l'adresse MAC de la cible.
+> **_Réponse :_**  Pour trouver d'autres endroits nous avons utilisés les filtres suivants : `wlan.fc.type_subtype == 4 && wlan.sa == fc:f1:36:22:49:74`. Cela permet de filtrer les Probe Request par rapport à l'adresse MAC de la cible.
 
 > ![Endroits](images/Endroits_Cible.png)
 
->Nous pouvons alors constater que la cible c'est encore connecter à 3 hotspsot différents : MIGROS, GVA Airport et Fleurs de Pains
+>Nous pouvons alors constater que la cible c'est encore connectée à 3 hotspsot différents : MIGROS, GVA Airport et Fleurs de Pains.
 ---
 
 # Réseaux protégés par WEP
@@ -111,7 +111,7 @@ Maintenant que vous avez la clé WEP, configurez la dans Wireshark afin de déch
 
 > **_Question :_** Combien de temps avez-vous attendu pour obtenir la clé WEP ?
 >
-> **_Réponse :_** Nous l'avons obtenues en moins de 1 seconde
+> **_Réponse :_** Nous l'avons obtenu en moins de 1 seconde
 
 ---
 > **_Montrer une capture d'écran de l'obtention de la clé WEP_**
@@ -121,7 +121,7 @@ Maintenant que vous avez la clé WEP, configurez la dans Wireshark afin de déch
 ---
 > **_Question :_** Arrivez-vous à récupérer les informations d’identification (credentials) de l’authentification basique http contenue dans la capture ?
 >
-> **_Réponse :_** Il est possible d'obtenir les credentials en regardant le premier paquet HTTP transmis au site Web
+> **_Réponse :_** Il est possible d'obtenir les credentials en regardant le premier paquet HTTP transmis au site Web:
 > ![Credentials](images/WEP_HTTP.PNG)
 > Les credentials sont donc admin admin
 
@@ -173,7 +173,7 @@ aircrack-ng <nom-du-fichier-capture> -w <nom-du-dictionnaire>
 
 > **_Question :_** Combien de temps avez-vous attendu pour obtenir la passphrase WPA ?
 >
-> **_Réponse :_** Nous avons du attendre 11 secondes
+> **_Réponse :_** Nous avons dû attendre ~11 secondes.
 
 ---
 > **_Montrer une capture d'écran de l'obtention de la passphrase WPA_**
@@ -187,7 +187,7 @@ aircrack-ng <nom-du-fichier-capture> -w <nom-du-dictionnaire>
 > **_Réponse :_**
 >![Configuration de protocoles dans Wireshark](images/WPA.PNG)
 
-> Les paquets ICMP ne nous permettant d'avoir d'informations sur la cible. Nous avons alors, une fois l'ip trouvé, effectué un nslookup pour trouver le nom du serveur. Qui par ailleurs fait partie des serveurs de service de Facebook.
+> Les paquets ICMP ne nous permettent pas d'avoir d'autres informations sur la cible. Nous avons alors, une fois l'ip trouvée, effectué un nslookup pour trouver le nom du serveur. On a découvert que c'est un serveur de service de Facebook.
 
 > Adresse IP du serveur : 31.13.64.35
 >
@@ -203,9 +203,12 @@ Nous avons enlevé une seule trame (choisie stratégiquement) du fichier de capt
 
 > **_Question :_** Est-ce que vous arrivez à refaire l'exercice ? Pourquoi ou pourquoi pas ?
 >
-> **_Réponse :_** Nous ne pouvons pas le refaire car nous n'avons pas le handshake complet. Il est donc impossible pour aircrack de trouver des réseaux.
-
+> **_Réponse :_** Lorsqu'on tentait d'ouvrir le fichier cap avec `aircrack-ng`, vous avions l'erreur suivante : 
 > ![Aircrack WPA](images/Aircrack_WPA_2.png)
+> Le problème a été reglé en l'ouvrant dans Wireshark puis en l'exportant en `pcap`. On peut voir qu'aucun handshake n'est disponible :
+> ![Aircrack WPA](images/Aircrack_WPA_2_2.png)
+> Nous ne pouvons pas le refaire l'exercice car nous n'avons pas le handshake complet. Il est donc impossible pour Aircrack de bruteforce la clé.
+
 
 ---
 > **_Question :_** Sur la base de votre réponse précédente, arrivez-vous à déduire quelle trame a été effacée ?
