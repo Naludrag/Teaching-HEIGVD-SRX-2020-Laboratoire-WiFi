@@ -121,7 +121,7 @@ Maintenant que vous avez la clé WEP, configurez la dans Wireshark afin de déch
 ---
 > **_Question :_** Arrivez-vous à récupérer les informations d’identification (credentials) de l’authentification basique http contenue dans la capture ?
 >
-> **_Réponse :_** Il est possible d'obtenir les credentials en regardant le premier paquet HTTP tranmsis au site Web
+> **_Réponse :_** Il est possible d'obtenir les credentials en regardant le premier paquet HTTP transmis au site Web
 > ![Credentials](images/WEP_HTTP.PNG)
 > Les credentials sont donc admin admin
 
