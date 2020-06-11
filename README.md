@@ -66,7 +66,7 @@ Grâce à la capture ci-dessus nous pouvons voir que l'appareil qui est trouvée
 
 > ![Endroits](images/Endroits_Cible.png)
 
->Nous pouvons alors constater que la cible c'est encore connecter à 3 hotspsot différents : MIGROS, GVA Airport et Flerus de Pains
+>Nous pouvons alors constater que la cible c'est encore connecter à 3 hotspsot différents : MIGROS, GVA Airport et Fleurs de Pains
 ---
 
 # Réseaux protégés par WEP
@@ -203,7 +203,7 @@ Nous avons enlevé une seule trame (choisie stratégiquement) du fichier de capt
 
 > **_Question :_** Est-ce que vous arrivez à refaire l'exercice ? Pourquoi ou pourquoi pas ?
 >
-> **_Réponse :_** Nous ne pouvons pas le refaire car nous n'avons pas le handshake complet. Il donc impossible pour aircrack de trouver des réseaux.
+> **_Réponse :_** Nous ne pouvons pas le refaire car nous n'avons pas le handshake complet. Il est donc impossible pour aircrack de trouver des réseaux.
 
 > ![Aircrack WPA](images/Aircrack_WPA_2.png)
 
